@@ -310,7 +310,7 @@ function show_item(item_id){
     
     });
 
-    // mesma coisa do anterior
+    //para previnir que haja um recarregamento da pg a função deve retornar falso
     return false;
 }
 
