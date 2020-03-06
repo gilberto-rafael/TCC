@@ -15,6 +15,7 @@ class Aluno {
     private $uf;
     private $telefone;
     private $celular;
+    private $email;
     /**
      * @return mixed
      */
@@ -128,6 +129,14 @@ class Aluno {
     }
 
     /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * @param mixed $id
      */
     public function setId($id)
@@ -237,6 +246,14 @@ class Aluno {
     public function setCelular($celular)
     {
         $this->celular = $celular;
-    }  
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 }
 ?>

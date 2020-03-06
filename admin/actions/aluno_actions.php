@@ -23,6 +23,7 @@
         $item->setUf($dadosJSON->uf_aluno);
         $item->setTelefone($dadosJSON->telefone_aluno);
         $item->setCelular($dadosJSON->celular_aluno);
+        $item->setEmail($dadosJSON->email_aluno);
 
         if($dao->insertAluno($item)){
             echo "sucesso";
@@ -61,7 +62,8 @@
         $item->setUf($dadosJSON->uf_aluno);
         $item->setTelefone($dadosJSON->telefone_aluno);
         $item->setCelular($dadosJSON->celular_aluno);
-        
+        $item->setEmail($dadosJSON->email_aluno);
+
         if($dao->atualizarAluno($item)){
             echo "sucesso";
         }else{

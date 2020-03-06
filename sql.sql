@@ -18,6 +18,7 @@ create table ALUNOS(
 	uf_aluno varchar(2),
 	telefone_aluno varchar(20),
 	celular_aluno varchar(16),
+	email_aluno varchar(50),
     status_ativo boolean
 );
 	

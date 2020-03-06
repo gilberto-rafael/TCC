@@ -7,7 +7,7 @@ class alunoDAO
     //inserir aluno
     public function insertAluno(Aluno $aluno)
     {
-        $query = "INSERT INTO `teste`.`alunos`(`nome_aluno`,`rfid_aluno`,`matricula_aluno`,`orgao_expedidor_rg`,`rg_aluno`,`cep_aluno`,`endereco_aluno`,`numero_aluno`,`bairro_aluno`,`cidade_aluno`,`uf_aluno`,`telefone_aluno`,`celular_aluno`)VALUES (:nome,:rfid,:matricula,:orgao,:rg,:cep,:endereco,:numero,:bairro,:cidade,:uf,:telefone,:celular);";
+        $query = "INSERT INTO `teste`.`alunos`(`nome_aluno`,`rfid_aluno`,`matricula_aluno`,`orgao_expedidor_rg`,`rg_aluno`,`cep_aluno`,`endereco_aluno`,`numero_aluno`,`bairro_aluno`,`cidade_aluno`,`uf_aluno`,`telefone_aluno`,`celular_aluno`,`email_aluno`)VALUES (:nome,:rfid,:matricula,:orgao,:rg,:cep,:endereco,:numero,:bairro,:cidade,:uf,:telefone,:celular,:email);";
         $statement = Conexao::getConnection()->prepare($query);
         
         $statement->bindValue(":nome", $aluno->getNome());
@@ -23,7 +23,8 @@ class alunoDAO
         $statement->bindValue(":uf", $aluno->getUf());
         $statement->bindValue(":telefone", $aluno->getTelefone());
         $statement->bindValue(":celular", $aluno->getCelular());
-        
+        $statement->bindValue(":email", $aluno->getEmail());
+
         return $statement->execute();
     }
 
@@ -50,8 +51,9 @@ class alunoDAO
                         'cidade_aluno' => $row->cidade_aluno,
                         'uf_aluno' => $row->uf_aluno,
                         'telefone_aluno' => $row->telefone_aluno,
-                        'celular_aluno' => $row->celular_aluno
-                    
+                        'celular_aluno' => $row->celular_aluno,
+                        'email_aluno' => $row->email_aluno
+
                     );
                 }
             }
@@ -83,7 +85,8 @@ class alunoDAO
                         'cidade_aluno' => $row->cidade_aluno,
                         'uf_aluno' => $row->uf_aluno,
                         'telefone_aluno' => $row->telefone_aluno,
-                        'celular_aluno' => $row->celular_aluno
+                        'celular_aluno' => $row->celular_aluno,
+                        'email_aluno' => $row->email_aluno
                     );
                 }
             }
@@ -103,7 +106,7 @@ class alunoDAO
 
     public function atualizarAluno($aluno)
     {
-        $query = "UPDATE `teste`.`alunos` SET `nome_aluno`=:nome,`rfid_aluno`=:rfid,`matricula_aluno`=:matricula,`orgao_expedidor_rg`=:orgao,`rg_aluno`=:rg,`cep_aluno`=:cep,`endereco_aluno`=:endereco,`numero_aluno`=:numero,`bairro_aluno`=:bairro,`cidade_aluno`=:cidade,`uf_aluno`=:uf,`telefone_aluno`=:telefone,`celular_aluno`=:celular WHERE `id_aluno`=:id_aluno";
+        $query = "UPDATE `teste`.`alunos` SET `nome_aluno`=:nome,`rfid_aluno`=:rfid,`matricula_aluno`=:matricula,`orgao_expedidor_rg`=:orgao,`rg_aluno`=:rg,`cep_aluno`=:cep,`endereco_aluno`=:endereco,`numero_aluno`=:numero,`bairro_aluno`=:bairro,`cidade_aluno`=:cidade,`uf_aluno`=:uf,`telefone_aluno`=:telefone,`celular_aluno`=:celular,`email_aluno`=:email WHERE `id_aluno`=:id_aluno";
      
         $statement = Conexao::getConnection()->prepare($query);
         $statement->bindValue(":id_aluno", $aluno->getId());
@@ -120,7 +123,8 @@ class alunoDAO
         $statement->bindValue(":uf", $aluno->getUf());
         $statement->bindValue(":telefone", $aluno->getTelefone());
         $statement->bindValue(":celular", $aluno->getCelular());
-        
+        $statement->bindValue(":email", $aluno->getEmail());
+
         return $statement->execute();
     }
 }

@@ -128,6 +128,7 @@ function close_insert(){
 	document.getElementById("uf_aluno").value = "";
 	document.getElementById("telefone_aluno").value = "";
 	document.getElementById("celular_aluno").value = "";
+	document.getElementById("email_aluno").value = "";
 	document.getElementById("response_error").style.display = "none";
 	document.getElementById("response_ok").style.display = "none";
 	document.getElementById("wait").style.display = "none";
@@ -181,9 +182,10 @@ function insert(){
 	var uf = document.getElementById("uf_aluno").value;
 	var telefone = document.getElementById("telefone_aluno").value;
 	var celular = document.getElementById("celular_aluno").value;
+	var email = document.getElementById("email_aluno").value;
 
 	//cria o objeto JSON
-	var dados = '{"nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","operacao":"insert"}';
+	var dados = '{"nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","email_aluno":"'+email+'","operacao":"insert"}';
 	document.getElementById("response_error").style.display="none";
 	document.getElementById("response_ok").style.display="none";
 	document.getElementById("wait").style.display="block";
@@ -293,6 +295,7 @@ function show_item(item_id){
     		document.getElementById("uf_aluno_ver").value = arr.dados[0].uf_aluno;
     		document.getElementById("telefone_aluno_ver").value = arr.dados[0].telefone_aluno;
     		document.getElementById("celular_aluno_ver").value = arr.dados[0].celular_aluno;
+    		document.getElementById("email_aluno_ver").value = arr.dados[0].email_aluno;
 
     	  $("#dlg_show").dialog({
   	        resizable: false,
@@ -386,6 +389,7 @@ function open_edit(item_id){
     		document.getElementById("uf_aluno_edit").value = arr.dados[0].uf_aluno;
     		document.getElementById("telefone_aluno_edit").value = arr.dados[0].telefone_aluno;
     		document.getElementById("celular_aluno_edit").value = arr.dados[0].celular_aluno;
+    		document.getElementById("email_aluno_edit").value = arr.dados[0].email_aluno;
 
     	  
     	  $("#dlg_editar").dialog({
@@ -424,9 +428,10 @@ function edit_aluno(){
 	var uf = document.getElementById("uf_aluno_edit").value;
 	var telefone = document.getElementById("telefone_aluno_edit").value;
 	var celular = document.getElementById("celular_aluno_edit").value;
+	var email = document.getElementById("email_aluno_edit").value;
 
 	//cria o objeto JSON
-	var dados = '{"id_aluno":"'+id+'", "nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","operacao":"edit"}';
+	var dados = '{"id_aluno":"'+id+'", "nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","email_aluno":"'+email+'","operacao":"edit"}';
 	$.ajax({
         type: "POST",
         url: "../actions/aluno_actions.php",
@@ -560,10 +565,16 @@ include_once ('../include/menubar.php');
 				<div class="form-group col-md-2">
 					<label for="celular_aluno_edit">Celular</label> <input
 						type="text" class="form-control" id="celular_aluno_edit"
-						placeholder="(DDD) número" name="celular_aluno">
+						placeholder="(DDD) número" name="celular_aluno"  onkeyup="Enter('email_aluno_edit');">
 				</div>
 			</div>
-
+            <div class="row">
+			    <div class="form-group col-md-3">
+					<label for="email_aluno_edit">Endereço E-mail</label> <input
+						type="text" class="form-control" id="email_aluno_edit"
+						placeholder="exemplo@dominio.com" name="email_aluno">
+				</div>
+			</div>
 			<hr>
 			<div class="row" id="response_error_edit" style="display: none">
 				<div class="alert alert-danger" role="alert">
@@ -722,7 +733,7 @@ include_once ('../include/menubar.php');
 						class="form-control" id="bairro_aluno" placeholder="Bairro"
 						name="bairro_aluno" onkeyup="Enter('cidade_aluno');">
 				</div>
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-4">
 					<label for="cidade_aluno">Cidade</label> <input type="text"
 						class="form-control" id="cidade_aluno" placeholder="Cidade"
 						name="cidade_aluno" onkeyup="Enter('uf_aluno');">
@@ -740,13 +751,16 @@ include_once ('../include/menubar.php');
 				<div class="form-group col-md-2">
 					<label for="celular_aluno">Celular</label> <input
 						type="text" class="form-control" id="celular_aluno"
-						placeholder="(DDD) número" name="celular_aluno">
+						placeholder="(DDD) número" name="celular_aluno" onkeyup="Enter('email_aluno');">
 				</div>
 			</div>
 			<div class="row">
-
+                <div class="form-group col-md-4">
+					<label for="email_aluno">Endereço E-mail</label> <input
+						type="text" class="form-control" id="email_aluno"
+						placeholder="exemplo@dominio.com" name="email_aluno">
+				</div>
 			</div>
-
 			<hr>
 			<div class="row" id="response_error" style="display: none">
 				<div class="alert alert-danger" role="alert">
@@ -880,6 +894,13 @@ include_once ('../include/menubar.php');
 				<label for="celular_aluno_ver">Celular</label> <input
 					type="text" class="form-control" id="celular_aluno_ver"
 					placeholder="(vazio)" name="celular_aluno_ver" disabled>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="form-group col-md-3">
+				<label for="email_aluno_ver">Endereço E-mail</label> <input
+					type="text" class="form-control" id="email_aluno_ver"
+					placeholder="(vazio)" name="email_aluno_ver" disabled>
 			</div>
 		</div>
 		<hr>
