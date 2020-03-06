@@ -569,7 +569,7 @@ include_once ('../include/menubar.php');
 				</div>
 			</div>
             <div class="row">
-			    <div class="form-group col-md-3">
+			    <div class="form-group col-md-4">
 					<label for="email_aluno_edit">Endereço E-mail</label> <input
 						type="text" class="form-control" id="email_aluno_edit"
 						placeholder="exemplo@dominio.com" name="email_aluno">
@@ -897,7 +897,7 @@ include_once ('../include/menubar.php');
 			</div>
 		</div>
 		<div class="row">
-		    <div class="form-group col-md-3">
+		    <div class="form-group col-md-4">
 				<label for="email_aluno_ver">Endereço E-mail</label> <input
 					type="text" class="form-control" id="email_aluno_ver"
 					placeholder="(vazio)" name="email_aluno_ver" disabled>
