@@ -474,17 +474,17 @@ include_once ('../include/menubar.php');
 				<div class="form-group col-md-2">
 					<label for="matricula_aluno_edit">Matricula</label> <input
 						type="text" class="form-control" id="matricula_aluno_edit"
-						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno_edit');">
+						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="rfid_aluno_edit">TagRFID</label> <input
 					    type="text" class="form-control" id="rfid_aluno_edit"
-					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno_edit');">
+					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-7">
 					<label for="nome_aluno_edit">Nome</label> <input
 						type="text" class="form-control" id="nome_aluno_edit"
-						placeholder="Nome" id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg_edit');">
+						placeholder="Nome" id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg_edit');" required>
 				</div>
 			</div>
 			<div class="row">
@@ -523,39 +523,39 @@ include_once ('../include/menubar.php');
 				<div class="form-group col-md-2">
 					<label for="rg_aluno_edit">RG</label> <input
 						type="text" class="form-control" id="rg_aluno_edit"
-						placeholder="RG" name="rg_aluno" onkeyup="Enter('cep_aluno_edit');">
+						placeholder="RG" name="rg_aluno" onkeyup="Enter('cep_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="cep_aluno_edit">CEP</label> <input
 						type="text" class="form-control" id="cep_aluno_edit"
-						placeholder="CEP" name="cep_aluno" onkeyup="Enter('endereco_aluno_edit');">
+						placeholder="CEP" name="cep_aluno" onkeyup="Enter('endereco_aluno_edit');" required>
 				</div>
                 <div class="form-group col-md-5">
 					<label for="endereco_aluno_edit">Endereço</label> <input
 						type="text" class="form-control" id="endereco_aluno_edit"
-						placeholder="Endereço" name="endereco_aluno" onkeyup="Enter('numero_aluno_edit');">
+						placeholder="Endereço" name="endereco_aluno" onkeyup="Enter('numero_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-1">
 					<label for="numero_aluno_edit">Número</label> <input
 						type="text" class="form-control" id="numero_aluno_edit"
-						placeholder="Nº" name="numero_aluno" onkeyup="Enter('bairro_aluno_edit');">
+						placeholder="Nº" name="numero_aluno" onkeyup="Enter('bairro_aluno_edit');" required>
 				</div>
 			</div>
 			<div class="row">
 			    <div class="form-group col-md-3">
 					<label for="bairro_aluno_edit">Bairro</label> <input
 						type="text" class="form-control" id="bairro_aluno_edit"
-						placeholder="Bairro" name="bairro_aluno" onkeyup="Enter('cidade_aluno_edit');">
+						placeholder="Bairro" name="bairro_aluno" onkeyup="Enter('cidade_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-3">
 					<label for="cidade_aluno_edit">Cidade</label> <input
 						type="text" class="form-control" id="cidade_aluno_edit"
-						placeholder="Cidade" name="cidade_aluno" onkeyup="Enter('uf_aluno_edit');">
+						placeholder="Cidade" name="cidade_aluno" onkeyup="Enter('uf_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-1">
 					<label for="uf_aluno_edit">UF</label> <input
 						type="text" class="form-control" id="uf_aluno_edit"
-						placeholder="UF" name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno_edit');">
+						placeholder="UF" name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="telefone_aluno_edit">Telefone</label> <input
@@ -571,8 +571,8 @@ include_once ('../include/menubar.php');
             <div class="row">
 			    <div class="form-group col-md-4">
 					<label for="email_aluno_edit">Endereço E-mail</label> <input
-						type="text" class="form-control" id="email_aluno_edit"
-						placeholder="exemplo@dominio.com" name="email_aluno">
+						type="email" class="form-control" id="email_aluno_edit"
+						placeholder="exemplo@dominio.com" name="email_aluno" required>
 				</div>
 			</div>
 			<hr>
@@ -660,23 +660,23 @@ include_once ('../include/menubar.php');
 			    <div class="form-group col-md-2">
 					<label for="matricula_aluno">Matricula</label> <input
 						type="text" class="form-control" id="matricula_aluno"
-						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno');">
+						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="rfid_aluno">TagRFID</label> <input
 					    type="text" class="form-control" id="rfid_aluno"
-					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno');">
+					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno');" required>
 				</div>
 				<div class="form-group col-md-8">
 					<label for="nome_aluno">Nome</label> <input type="text"
 						class="form-control" id="nome_aluno" placeholder="Nome"
-						id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg');">
+						id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg');" required>
 				</div>
 			</div>
 			<div class="row">
                  <div class="form-group col-md-2">
 					<label for="orgao_expedidor_rg">RG</label>
-					    <select id="orgao_expedidor_rg" class="form-control" onkeyup="Enter('rg_aluno');">
+					    <select id="orgao_expedidor_rg" class="form-control" onkeyup="Enter('rg_aluno');" required>
                         <option value="ac">Acre</option>
                         <option value="al">Alagoas</option>
                         <option value="ap">Amapá</option>
@@ -709,39 +709,39 @@ include_once ('../include/menubar.php');
 				<div class="form-group col-md-2">
 					<label for="rg_aluno">RG</label> <input type="text"
 						class="form-control" id="rg_aluno" placeholder="RG"
-						name="rg_aluno" onkeyup="Enter('cep_aluno');">
+						name="rg_aluno" onkeyup="Enter('cep_aluno');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="cep_aluno">CEP</label> <input type="text"
 						class="form-control" id="cep_aluno" placeholder="CEP"
-						name="cep_aluno" size="10" maxlength="9" onblur="pesquisacep(this.value);" onkeyup="Enter('endereco_aluno');">
+						name="cep_aluno" size="10" maxlength="9" onblur="pesquisacep(this.value);" onkeyup="Enter('endereco_aluno');" required>
 				</div>
 				<div class="form-group col-md-5">
 					<label for="endereco_aluno">Endereço</label> <input
 						type="text" class="form-control" id="endereco_aluno"
-						placeholder="Endereço" name="nome_aluno" onkeyup="Enter('numero_aluno');">
+						placeholder="Endereço" name="nome_aluno" onkeyup="Enter('numero_aluno');" required>
 				</div>
 				<div class="form-group col-md-1">
 					<label for="numero_aluno">Número</label> <input type="text"
 						class="form-control" id="numero_aluno" placeholder="Nº"
-						name="numero_aluno" onkeyup="Enter('bairro_aluno');">
+						name="numero_aluno" onkeyup="Enter('bairro_aluno');" required>
 				</div>
 			</div>
 			<div class="row">
                 <div class="form-group col-md-3">
 					<label for="bairro_aluno">Bairro</label> <input type="text"
 						class="form-control" id="bairro_aluno" placeholder="Bairro"
-						name="bairro_aluno" onkeyup="Enter('cidade_aluno');">
+						name="bairro_aluno" onkeyup="Enter('cidade_aluno');" required>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="cidade_aluno">Cidade</label> <input type="text"
 						class="form-control" id="cidade_aluno" placeholder="Cidade"
-						name="cidade_aluno" onkeyup="Enter('uf_aluno');">
+						name="cidade_aluno" onkeyup="Enter('uf_aluno');" required>
 				</div>
 				<div class="form-group col-md-1">
 					<label for="uf_aluno">UF</label> <input type="text"
 						class="form-control" id="uf_aluno" placeholder="UF"
-						name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno');">
+						name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno');" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="telefone_aluno">Telefone</label> <input type="text"
@@ -757,8 +757,8 @@ include_once ('../include/menubar.php');
 			<div class="row">
                 <div class="form-group col-md-4">
 					<label for="email_aluno">Endereço E-mail</label> <input
-						type="text" class="form-control" id="email_aluno"
-						placeholder="exemplo@dominio.com" name="email_aluno">
+						type="email" class="form-control" id="email_aluno"
+						placeholder="exemplo@dominio.com" name="email_aluno" required>
 				</div>
 			</div>
 			<hr>

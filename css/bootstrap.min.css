@@ -14,6 +14,52 @@ body {
 	margin: 0
 }
 
+.body-responsive{
+    min-height: .01%;
+	overflow-x: auto
+}
+
+.wrapper{
+    min-width: .01%;
+    margin: auto;
+    min-height: .01%;
+	overflow-x: auto
+}
+
+.iheader{
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../img/background.jpg");
+    height: 100vh;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.welcome-text{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase
+}
+
+.welcome-a{
+    border: 1px solid #fff;
+    padding: 10px 25px;
+    font-size:14px;
+    margin-top: 20px;
+    display: inline-block;
+    color: #fff;
+}
+.welcome-a:hover{
+    background:#fff;
+    color: #333;
+}
+
+.logo img{
+    width: 10%;
+    float: left;
+    height: auto;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	main, menu, nav, section, summary {
 	display: block
@@ -1831,6 +1877,15 @@ pre code {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto
+}
+
+.container-center {
+	padding-right: 15%;
+	padding-left: 15%;
+	margin-right: auto;
+	margin-left: auto;
+	margin: 200 auto;
+	text-align: center
 }
 
 @media ( min-width :768px) {
@@ -4307,6 +4362,32 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	padding-left: 0;
 	margin-bottom: 0;
 	list-style: none
+}
+
+.nav-area{
+    float: right;
+    list-style: none;
+    margin-top:2%;
+    margin-right: 5%;
+    min-width: .01%;
+}
+
+.nav-area li{
+    display: inline-block;
+}
+
+.nav-area li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: poppins;
+    font-size: 2vw;
+}
+
+.nav-area li a:hover{
+    background: #fff;
+    color: #333;
+
 }
 
 .nav>li {

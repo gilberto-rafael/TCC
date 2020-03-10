@@ -24,5 +24,5 @@ create table ALUNOS(
 	
 truncate table alunos;
 
-insert into ALUNOS (nome_aluno, rfid_aluno, matricula_aluno, orgao_expedidor_rg, rg_aluno, cep_aluno, endereco_aluno, numero_aluno, bairro_aluno, cidade_aluno, uf_aluno, telefone_aluno, celular_aluno) values
-('Rafael G. Palmeira', '1234', '055678', 'SP','50.413.264-7', '18730-000', 'rua dos bobos', '342', 'centro', 'itai', 'sp', '(14) 3769-9200', '(14) 99631-3828');
+insert into ALUNOS (nome_aluno, rfid_aluno, matricula_aluno, orgao_expedidor_rg, rg_aluno, cep_aluno, endereco_aluno, numero_aluno, bairro_aluno, cidade_aluno, uf_aluno, telefone_aluno, celular_aluno, email_aluno) values
+('Rafael G. Palmeira', '1234', '055678', 'SP','50.413.264-7', '18730-000', 'rua dos bobos', '342', 'centro', 'itai', 'sp', '(14) 3769-9200', '(14) 99631-3828', 'teste@dominio');
