@@ -5,9 +5,9 @@ class Conexao {
     private static $user = "root";
     private static $password = "";
     private static $db = "teste";
-    
+
     public static $conn;
-    
+
     public static function getConnection() {
         if (!isset(self::$conn)) {
             self::$conn = new PDO('mysql:host=' . self::$host . ';dbname=' . self::$db,
@@ -15,7 +15,7 @@ class Conexao {
             self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$conn->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);
         }
-        
+
         return self::$conn;
     }
 }

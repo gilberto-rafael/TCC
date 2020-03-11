@@ -14,9 +14,7 @@
   <body>
 	<?php
         include('include/menubar.php');
-        echo "olá mundo!"
+        echo "olá mundo!";
 	?>
-	
    </body>
  </html>
-	
