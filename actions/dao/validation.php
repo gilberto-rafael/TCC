@@ -19,14 +19,14 @@
 
 		//Buscar na tabela usuario o usuário que corresponde com os dados digitado no formulário
 
-		$result_usuario = "SELECT * FROM usuarios WHERE email = '123@123' && senha = '$senha' LIMIT 1;";
+		$result_usuario = "SELECT * FROM usuarios WHERE email = '$usuario' && senha = '$senha' LIMIT 1;";
 		$resultado_usuario = mysqli_query($connect, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 
 
 		if (empty($resultado)){
 		    //loginErro é uma var global recebendo a mensagem de erro
-			$_SESSION['loginErro'] = "Usuário ou senha Inválidos 1111";
+			$_SESSION['loginErro'] = "Usuário ou senha Inválidos";
 		    header("Location: ../../pages/login.php");
 
 		} elseif (isset($resultado)){

@@ -78,4 +78,3 @@ if(tab.className=='table table-striped'){
  <script src="/PresencaCerta/js/jquery-1.12.4.js"></script>
  <script src="/PresencaCerta/js/jquery-ui.js"></script>
  <link rel="stylesheet" href="/PresencaCerta/css/jquery-ui.css">
- 

@@ -26,14 +26,9 @@
 
 			<label for="inputPassword" class="sr-only">Senha</label>
 			<input type="password" class="form-control" id="inputPassword"
-				placeholder="Senha" name="senha" required></br></br>
+				placeholder="Senha" name="senha" required></br>
 
-            <button class="btn btn-lg btn-danger btn-block" type="submit">Acessar</button>
-
-            <a href="#" class="welcome-a">Entre em contato</a>
-
-        </form>
-            <!--Exibição das mensagens de erro-->
+			<!--Exibição das mensagens de erro-->
             <p class="text-center text-danger">
 			    <?php if(isset($_SESSION['loginErro'])){
 				    echo $_SESSION['loginErro'];
@@ -48,6 +43,12 @@
 				    unset($_SESSION['logindeslogado']);
 			    }?>
 		    </p>
+
+            <button class="btn btn-lg btn-info btn-block" type="submit">Acessar</button><br>
+
+		    <a href="#" class="welcome-a">Entre em contato</a>
+
+        </form>
         </div>
     </header>
 
