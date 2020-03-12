@@ -461,6 +461,7 @@ function edit_aluno(){
 <?php
 include_once ('../include/menubar.php');
 ?>
+<a href="../../actions/dao/logout.php">Sair</a>
 
 <!-- janela para editar -->
     <div id="dlg_editar" title="Editar Aluno" style="display: none">

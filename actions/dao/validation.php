@@ -30,6 +30,12 @@
 		    header("Location: ../../pages/login.php");
 
 		} elseif (isset($resultado)){
+
+		    $_SESSION['usuarioId'] = $resultado['id'];
+		    $_SESSION['usuarioNome'] = $resultado['nome'];
+		    $_SESSION['usuarioNiveisAcessoId'] = $resultado['niveis_acesso_id'];
+		    $_SESSION['usuarioEmail'] = $resultado['email'];
+		    $_SESSION['usuarioSenha'] = $resultado['senha'];
 			header("Location: ../../admin/index.php");
 
 		} else {

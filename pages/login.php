@@ -46,7 +46,7 @@
 
             <button class="btn btn-lg btn-info btn-block" type="submit">Acessar</button><br>
 
-		    <a href="#" class="welcome-a">Entre em contato</a>
+		    <a href="#" class="welcome-a">Esqueci minha senha</a>
 
         </form>
         </div>
