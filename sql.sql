@@ -20,7 +20,7 @@ create table if not exists alunos(
 	telefone_aluno varchar(20),
 	celular_aluno varchar(16),
 	email_aluno varchar(50),
-    status_ativo boolean default 'true'
+    status_ativo boolean default '1'
 );
 
 truncate table alunos;
@@ -45,3 +45,5 @@ drop table usuarios;
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `situacoe_id`, `niveis_acesso_id`, `created`, `modified`) VALUES
 (1, 'Rafael', '123@123', '202cb962ac59075b964b07152d234b70', 1, 1, '2016-02-14 00:00:01', NULL);
+
+-- ----------------------------------

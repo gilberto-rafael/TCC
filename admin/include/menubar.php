@@ -30,7 +30,8 @@
 					aria-expanded="false">Relatórios<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Relatório 1</a></li></ul>
-				<li class="active"> <a href="#" onclick="trocar();">Escuro</a></l
+				<li class="active"> <a href="#" onclick="trocar();">Escuro</a></li>
+				<li><a href="/PresencaCerta/actions/dao/logout.php">Sair</a></li>
 			</ul>
 			</ul>
 		</div>

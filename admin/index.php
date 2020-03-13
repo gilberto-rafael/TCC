@@ -19,12 +19,10 @@
 
         if ($_SESSION['usuarioId'] == ""){
 		    //loginErro é uma var global recebendo a mensagem de erro
-			$_SESSION['loginErro'] = "Usuário ou senha Inválidos";
+			$_SESSION['loginErro'] = "Confirme sua identidade antes de acessar!";
 		    header("Location: ../pages/login.php");
 		}
 
 	?>
-	<br>
-	<a href="../actions/dao/logout.php">Sair</a>
    </body>
 </html>
