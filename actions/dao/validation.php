@@ -17,9 +17,9 @@
         //Criptografia md5
 		$senha = md5($senha);
 
-		//Buscar na tabela usuario o usuário que corresponde com os dados digitado no formulário
+		//Buscar na tabela usuário o usuário que corresponde com os dados digitado no formulário
 
-		$result_usuario = "SELECT * FROM usuarios WHERE email = '$usuario' && senha = '$senha' LIMIT 1;";
+		$result_usuario = "SELECT * FROM alunos WHERE email_aluno = '$usuario' && senha_aluno = '$senha' LIMIT 1;";
 		$resultado_usuario = mysqli_query($connect, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 
@@ -31,11 +31,11 @@
 
 		} elseif (isset($resultado)){
 
-		    $_SESSION['usuarioId'] = $resultado['id'];
-		    $_SESSION['usuarioNome'] = $resultado['nome'];
+		    $_SESSION['usuarioId'] = $resultado['id_aluno'];
+		    $_SESSION['usuarioNome'] = $resultado['nome_aluno'];
 		    $_SESSION['usuarioNiveisAcessoId'] = $resultado['niveis_acesso_id'];
-		    $_SESSION['usuarioEmail'] = $resultado['email'];
-		    $_SESSION['usuarioSenha'] = $resultado['senha'];
+		    $_SESSION['usuarioEmail'] = $resultado['email_aluno'];
+		    $_SESSION['usuarioSenha'] = $resultado['senha_aluno'];
 			header("Location: ../../admin/index.php");
 
 		} else {
