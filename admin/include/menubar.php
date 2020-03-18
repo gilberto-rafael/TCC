@@ -1,4 +1,3 @@
-
 <!-- Static navbar -->
 <nav class="navbar navbar-default">
 	<div class="container">
@@ -19,8 +18,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Cadastros<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/PresencaCerta/admin/pages/cad_aluno.php">Alunos</a></li>
-						<li><a href="#">Professores</a></li>
+						<li><a href="/PresencaCerta/admin/pages/cad_pessoa.php">Pessoas</a></li>
 						<li><a href="#">Cartões RFID</a></li>
 						<li><a href="#">Disciplinas</a></li>
 						</ul>
@@ -70,12 +68,12 @@ if(tab.className=='table table-striped'){
 </script>
 
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
- <script src="/PresencaCerta/js/bootstrap.min.js"></script>
- <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- <script src="/PresencaCerta/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="/PresencaCerta/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/PresencaCerta/js/ie10-viewport-bug-workaround.js"></script>
  
- <script src="/PresencaCerta/js/jquery-1.12.4.js"></script>
- <script src="/PresencaCerta/js/jquery-ui.js"></script>
- <link rel="stylesheet" href="/PresencaCerta/css/jquery-ui.css">
+<script src="/PresencaCerta/js/jquery-1.12.4.js"></script>
+<script src="/PresencaCerta/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/PresencaCerta/css/jquery-ui.css">

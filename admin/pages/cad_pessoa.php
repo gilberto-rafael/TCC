@@ -29,29 +29,39 @@ function Enter(idinput){
 }
 
 <!-- Máscaras -->
-$('#cep_aluno').mask("00000-000")
-$('#cep_aluno_edit').mask("00000-000")
-$('#telefone_aluno').mask("(00) 0000-0000")
-$('#telefone_aluno_edit').mask("(00) 0000-0000")
-$('#celular_aluno').mask("(00) 00000-0000")
-$('#celular_aluno_edit').mask("(00) 00000-0000")
+$('#cep_pessoa').mask("00000-000")
+$('#cep_pessoa_edit').mask("00000-000")
+$('#telefone_pessoa').mask("(00) 0000-0000")
+$('#telefone_pessoa_edit').mask("(00) 0000-0000")
+$('#celular_pessoa').mask("(00) 00000-0000")
+$('#celular_pessoa_edit').mask("(00) 00000-0000")
 
 <!-- WS de consultar CEP de ViaCEP (viacep.com.br) -->
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
-    document.getElementById('endereco_aluno').value=("");
-    document.getElementById('bairro_aluno').value=("");
-    document.getElementById('cidade_aluno').value=("");
-    document.getElementById('uf_aluno').value=("");
+    document.getElementById('endereco_pessoa').value=("");
+    document.getElementById('bairro_pessoa').value=("");
+    document.getElementById('cidade_pessoa').value=("");
+    document.getElementById('uf_pessoa').value=("");
+
+    document.getElementById('endereco_pessoa_edit').value=("");
+    document.getElementById('bairro_pessoa_edit').value=("");
+    document.getElementById('cidade_pessoa_edit').value=("");
+    document.getElementById('uf_pessoa_edit').value=("");
 }
 
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        document.getElementById('endereco_aluno').value=(conteudo.logradouro);
-        document.getElementById('bairro_aluno').value=(conteudo.bairro);
-        document.getElementById('cidade_aluno').value=(conteudo.localidade);
-        document.getElementById('uf_aluno').value=(conteudo.uf);
+        document.getElementById('endereco_pessoa').value=(conteudo.logradouro);
+        document.getElementById('bairro_pessoa').value=(conteudo.bairro);
+        document.getElementById('cidade_pessoa').value=(conteudo.localidade);
+        document.getElementById('uf_pessoa').value=(conteudo.uf);
+
+        document.getElementById('endereco_pessoa_edit').value=(conteudo.logradouro);
+        document.getElementById('bairro_pessoa_edit').value=(conteudo.bairro);
+        document.getElementById('cidade_pessoa_edit').value=(conteudo.localidade);
+        document.getElementById('uf_pessoa_edit').value=(conteudo.uf);
     } //end if.
     else {
         //CEP não Encontrado.
@@ -75,10 +85,15 @@ function pesquisacep(valor) {
         if(validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('endereco_aluno').value="buscando...";
-            document.getElementById('bairro_aluno').value="buscando...";
-            document.getElementById('cidade_aluno').value="buscando...";
-            document.getElementById('uf_aluno').value="buscando...";
+            document.getElementById('endereco_pessoa').value="buscando...";
+            document.getElementById('bairro_pessoa').value="buscando...";
+            document.getElementById('cidade_pessoa').value="buscando...";
+            document.getElementById('uf_pessoa').value="buscando...";
+
+            document.getElementById('endereco_pessoa_edit').value="buscando...";
+            document.getElementById('bairro_pessoa_edit').value="buscando...";
+            document.getElementById('cidade_pessoa_edit').value="buscando...";
+            document.getElementById('uf_pessoa_edit').value="buscando...";
 
             //Cria um elemento javascript.
             var script = document.createElement('script');
@@ -115,20 +130,20 @@ function open_insert(){
 
 function close_insert(){
 	//em caso de suceso limpa os valores dos campos de texto
-	document.getElementById("matricula_aluno").value = "";
-	document.getElementById("rfid_aluno").value = "";
-    document.getElementById("nome_aluno").value = "";
+	document.getElementById("matricula_pessoa").value = "";
+	document.getElementById("rfid_pessoa").value = "";
+    document.getElementById("nome_pessoa").value = "";
     document.getElementById("orgao_expedidor_rg").value = "";
-	document.getElementById("rg_aluno").value = "";
-	document.getElementById("cep_aluno").value = "";
-	document.getElementById("endereco_aluno").value = "";
-	document.getElementById("numero_aluno").value = "";
-	document.getElementById("bairro_aluno").value = "";
-	document.getElementById("cidade_aluno").value = "";
-	document.getElementById("uf_aluno").value = "";
-	document.getElementById("telefone_aluno").value = "";
-	document.getElementById("celular_aluno").value = "";
-	document.getElementById("email_aluno").value = "";
+	document.getElementById("rg_pessoa").value = "";
+	document.getElementById("cep_pessoa").value = "";
+	document.getElementById("endereco_pessoa").value = "";
+	document.getElementById("numero_pessoa").value = "";
+	document.getElementById("bairro_pessoa").value = "";
+	document.getElementById("cidade_pessoa").value = "";
+	document.getElementById("uf_pessoa").value = "";
+	document.getElementById("telefone_pessoa").value = "";
+	document.getElementById("celular_pessoa").value = "";
+	document.getElementById("email_pessoa").value = "";
 	document.getElementById("response_error").style.display = "none";
 	document.getElementById("response_ok").style.display = "none";
 	document.getElementById("wait").style.display = "none";
@@ -138,54 +153,61 @@ function close_insert(){
 
 function insert(){
 	//valida se campos estão preenchidos
-	if(document.getElementById("nome_aluno").value == ""){
+	if(document.getElementById("nome_pessoa").value == ""){
 		document.getElementById("response_error").style.display = "block";
-		alert("Preencha o nome do aluno!");
+		document.getElementById("nome_pessoa").focus();
+		alert("Preencha o nome da pessoa!");
 		return false;
-	} else if(document.getElementById("rfid_aluno").value == ""){
+	} else if(document.getElementById("rfid_pessoa").value == ""){
 		alert("Preencha a condição!");
+		document.getElementById("rfid_pessoa").focus();
 		document.getElementById("response_error").style.display = "block";
 		return false;
-	} else if(document.getElementById("matricula_aluno").value == ""){
+	} else if(document.getElementById("matricula_pessoa").value == ""){
 		alert("Preencha a matricula!");
+		document.getElementById("matricula_pessoa").focus();
 		document.getElementById("response_error").style.display = "block";
 		return false;
-	} else if(document.getElementById("orgao_expedidor_rg").value == ""){
+	} else if(document.getElementById("rg_pessoa").value == ""){
 		alert("Preencha o RG!");
+		document.getElementById("rg_pessoa").focus();
 		document.getElementById("response_error").style.display = "block";
 		return false;
-	} else if(document.getElementById("rg_aluno").value == ""){
-		alert("Preencha o Rg!");
-		document.getElementById("response_error").style.display = "block";
-		return false;
-	} else if(document.getElementById("cep_aluno").value == ""){
+	} else if(document.getElementById("cep_pessoa").value == ""){
 		alert("Preencha o CEP!");
+		document.getElementById("cep_pessoa").focus();
 		document.getElementById("response_error").style.display = "block";
 		return false;
-	} else if(document.getElementById("endereco_aluno").value == ""){
+	} else if(document.getElementById("endereco_pessoa").value == ""){
 		alert("Preencha o endereço!");
+		document.getElementById("endereco_pessoa").focus();
 		document.getElementById("response_error").style.display = "block";
+		return false;
+	} else if(document.getElementById("email_pessoa").value == ""){
+		alert("Preencha o e-mail!");
+		document.getElementById("email_pessoa").focus();
+		document.getElementById("response_error").style.display = "block" ;
 		return false;
 	}
 
 	//insere
-	var matricula = document.getElementById("matricula_aluno").value;
-	var rfid = document.getElementById("rfid_aluno").value;
-	var nome = document.getElementById("nome_aluno").value;
+	var matricula = document.getElementById("matricula_pessoa").value;
+	var rfid = document.getElementById("rfid_pessoa").value;
+	var nome = document.getElementById("nome_pessoa").value;
 	var orgao = document.getElementById("orgao_expedidor_rg").value;
-	var rg = document.getElementById("rg_aluno").value;
-	var cep = document.getElementById("cep_aluno").value;
-	var endereco = document.getElementById("endereco_aluno").value;
-	var numero = document.getElementById("numero_aluno").value;
-	var bairro = document.getElementById("bairro_aluno").value;
-	var cidade = document.getElementById("cidade_aluno").value;
-	var uf = document.getElementById("uf_aluno").value;
-	var telefone = document.getElementById("telefone_aluno").value;
-	var celular = document.getElementById("celular_aluno").value;
-	var email = document.getElementById("email_aluno").value;
+	var rg = document.getElementById("rg_pessoa").value;
+	var cep = document.getElementById("cep_pessoa").value;
+	var endereco = document.getElementById("endereco_pessoa").value;
+	var numero = document.getElementById("numero_pessoa").value;
+	var bairro = document.getElementById("bairro_pessoa").value;
+	var cidade = document.getElementById("cidade_pessoa").value;
+	var uf = document.getElementById("uf_pessoa").value;
+	var telefone = document.getElementById("telefone_pessoa").value;
+	var celular = document.getElementById("celular_pessoa").value;
+	var email = document.getElementById("email_pessoa").value;
 
 	//cria o objeto JSON
-	var dados = '{"nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","email_aluno":"'+email+'","operacao":"insert"}';
+	var dados = '{"nome_pessoa":"'+nome+'","rfid_pessoa":"'+rfid+'","matricula_pessoa":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_pessoa":"'+rg+'","cep_pessoa":"'+cep+'","endereco_pessoa":"'+endereco+'","numero_pessoa":"'+numero+'","bairro_pessoa":"'+bairro+'","cidade_pessoa":"'+cidade+'","uf_pessoa":"'+uf+'","telefone_pessoa":"'+telefone+'","celular_pessoa":"'+celular+'","email_pessoa":"'+email+'","operacao":"insert"}';
 	document.getElementById("response_error").style.display="none";
 	document.getElementById("response_ok").style.display="none";
 	document.getElementById("wait").style.display="block";
@@ -194,7 +216,7 @@ function insert(){
 	 //criar o AJAX
 	 $.ajax({
 		 type: "POST",
-		 url: "../actions/aluno_actions.php",
+		 url: "../actions/pessoa_actions.php",
 		 data: "dados="+dados
 	 }).done(function(data){
 		 if(String(data).replace("\n","").replace("\r","") == "sucesso"){
@@ -214,7 +236,7 @@ function carregaDados(){
 
 	$.ajax({
 		type:"POST",
-		url: "../actions/aluno_actions.php",
+		url: "../actions/pessoa_actions.php",
 		data: "dados=" + dados
 	})
 	.done(function (data){
@@ -231,38 +253,38 @@ function carregaDados(){
 
 			//cria a coluna 0 e atribui o valor
 			var coluna = linha.insertCell(0);
-			coluna.innerHTML = vetor.dados[i].id_aluno;
+			coluna.innerHTML = vetor.dados[i].id_pessoa;
 
 			//cria a coluna 1 e atribui o valor
 			coluna = linha.insertCell(1);
-			coluna.innerHTML = vetor.dados[i].nome_aluno;
+			coluna.innerHTML = vetor.dados[i].nome_pessoa;
 
 			//cria a coluna 2 e atribui o valor
 			coluna = linha.insertCell(2);
-			coluna.innerHTML = vetor.dados[i].matricula_aluno;
+			coluna.innerHTML = vetor.dados[i].matricula_pessoa;
 
 			//cria a coluna 3 e atribui o valor
 			coluna = linha.insertCell(3);
-			coluna.innerHTML = vetor.dados[i].rg_aluno;
+			coluna.innerHTML = vetor.dados[i].rg_pessoa;
 
 			//cria a coluna 4 e atribui o valor
 			coluna = linha.insertCell(4);
-			coluna.innerHTML = vetor.dados[i].cep_aluno;
+			coluna.innerHTML = vetor.dados[i].cep_pessoa;
 
 			//cria a coluna 5 e atribui o valor
 			coluna = linha.insertCell(5);
-			coluna.innerHTML = vetor.dados[i].numero_aluno;
+			coluna.innerHTML = vetor.dados[i].numero_pessoa;
 
 			//cria a coluna 6 e atribui o valor
 			coluna = linha.insertCell(6);
-			coluna.innerHTML = vetor.dados[i].telefone_aluno;
+			coluna.innerHTML = vetor.dados[i].telefone_pessoa;
 
 			//cria a coluna 7 e atribui os botões
 			coluna = linha.insertCell(7);
-			coluna.innerHTML = '<a class="btn btn-success btn-xs" onclick="show_item(' + vetor.dados[i].id_aluno  + ')"> Detalhes </a>'+
-							   '<a class="btn btn-warning btn-xs" onclick="open_edit(' + vetor.dados[i].id_aluno  + ')"> Editar </a>'+
+			coluna.innerHTML = '<a class="btn btn-success btn-xs" onclick="show_item(' + vetor.dados[i].id_pessoa  + ')"> Detalhes </a>'+
+							   '<a class="btn btn-warning btn-xs" onclick="open_edit(' + vetor.dados[i].id_pessoa  + ')"> Editar </a>'+
 							   '<a class="btn btn-danger btn-xs"'+
-							   'onclick="confirme_delete('+vetor.dados[i].id_aluno+',\''+vetor.dados[i].nome_aluno+'\')"> Excluir </a>';
+							   'onclick="confirme_delete('+vetor.dados[i].id_pessoa+',\''+vetor.dados[i].nome_pessoa+'\')"> Excluir </a>';
 		}
 	})
 	.fail(function (data){
@@ -273,29 +295,29 @@ function carregaDados(){
 }
 
 function show_item(item_id){
-	var dados = '{"operacao":"show","id_aluno" : "' + item_id + '"}'
+	var dados = '{"operacao":"show","id_pessoa" : "' + item_id + '"}'
 	$.ajax({
         type: "POST",
-        url: "../actions/aluno_actions.php",
+        url: "../actions/pessoa_actions.php",
         data: "dados=" +  dados
     })
     .done(function(data){
     	  var arr = JSON.parse(data);
-    	  	document.getElementById("id_aluno_ver").value = arr.dados[0].id_aluno;
-     	    document.getElementById("nome_aluno_ver").value = arr.dados[0].nome_aluno;
-     	    document.getElementById("rfid_aluno_ver").value = arr.dados[0].rfid_aluno;
-    		document.getElementById("matricula_aluno_ver").value = arr.dados[0].matricula_aluno;
+    	  	document.getElementById("id_pessoa_ver").value = arr.dados[0].id_pessoa;
+     	    document.getElementById("nome_pessoa_ver").value = arr.dados[0].nome_pessoa;
+     	    document.getElementById("rfid_pessoa_ver").value = arr.dados[0].rfid_pessoa;
+    		document.getElementById("matricula_pessoa_ver").value = arr.dados[0].matricula_pessoa;
     		document.getElementById("orgao_expedidor_rg_ver").select = arr.dados[0].orgao_expedidor_rg;
-    		document.getElementById("rg_aluno_ver").value = arr.dados[0].rg_aluno;
-    		document.getElementById("cep_aluno_ver").value = arr.dados[0].cep_aluno;
-    		document.getElementById("endereco_aluno_ver").value = arr.dados[0].endereco_aluno;
-    		document.getElementById("numero_aluno_ver").value = arr.dados[0].numero_aluno;
-    		document.getElementById("bairro_aluno_ver").value = arr.dados[0].bairro_aluno;
-    		document.getElementById("cidade_aluno_ver").value = arr.dados[0].cidade_aluno;
-    		document.getElementById("uf_aluno_ver").value = arr.dados[0].uf_aluno;
-    		document.getElementById("telefone_aluno_ver").value = arr.dados[0].telefone_aluno;
-    		document.getElementById("celular_aluno_ver").value = arr.dados[0].celular_aluno;
-    		document.getElementById("email_aluno_ver").value = arr.dados[0].email_aluno;
+    		document.getElementById("rg_pessoa_ver").value = arr.dados[0].rg_pessoa;
+    		document.getElementById("cep_pessoa_ver").value = arr.dados[0].cep_pessoa;
+    		document.getElementById("endereco_pessoa_ver").value = arr.dados[0].endereco_pessoa;
+    		document.getElementById("numero_pessoa_ver").value = arr.dados[0].numero_pessoa;
+    		document.getElementById("bairro_pessoa_ver").value = arr.dados[0].bairro_pessoa;
+    		document.getElementById("cidade_pessoa_ver").value = arr.dados[0].cidade_pessoa;
+    		document.getElementById("uf_pessoa_ver").value = arr.dados[0].uf_pessoa;
+    		document.getElementById("telefone_pessoa_ver").value = arr.dados[0].telefone_pessoa;
+    		document.getElementById("celular_pessoa_ver").value = arr.dados[0].celular_pessoa;
+    		document.getElementById("email_pessoa_ver").value = arr.dados[0].email_pessoa;
 
     	  $("#dlg_show").dialog({
   	        resizable: false,
@@ -319,20 +341,20 @@ function close_view(){
 }
 
 //exibe janela com id e nome p confirmar delete
-function confirme_delete(id_aluno,nome_aluno){
+function confirme_delete(id_pessoa,nome_pessoa){
 
-	document.getElementById("id_aluno_del").value = id_aluno;
-	document.getElementById("nome_aluno_del").value = nome_aluno;
+	document.getElementById("id_pessoa_del").value = id_pessoa;
+	document.getElementById("nome_pessoa_del").value = nome_pessoa;
 
-	document.getElementById("btn_excluir").onclick= function delete_aluno(){
-		var dados = '{"operacao":"delete","id_aluno" : "' + id_aluno + '"}'
+	document.getElementById("btn_excluir").onclick= function delete_pessoa(){
+		var dados = '{"operacao":"delete","id_pessoa" : "' + id_pessoa + '"}'
 		document.getElementById("response_error_delete").style.display="none";
 		document.getElementById("response_ok_delete").style.display="none";
 		document.getElementById("wait_delete").style.display="block";
 		
 		$.ajax({
 	        type: "POST",
-	        url: "../actions/aluno_actions.php",
+	        url: "../actions/pessoa_actions.php",
 	        data: "dados=" +  dados
 	    })
 	    .done(function(data){
@@ -366,30 +388,30 @@ function cancel_delete(){
 function open_edit(item_id){
   //busca dados do BD pois devem ser exibidos os dados exatos do BD
 
-	var dados = '{"operacao":"show","id_aluno" : "' + item_id + '"}'
+	var dados = '{"operacao":"show","id_pessoa" : "' + item_id + '"}'
 	$.ajax({
         type: "POST",
-        url: "../actions/aluno_actions.php",
+        url: "../actions/pessoa_actions.php",
         data: "dados=" +  dados
     })
     .done(function(data){
 
     	  var arr = JSON.parse(data);
-    	  	document.getElementById("id_aluno_edit").value = arr.dados[0].id_aluno;
-     	    document.getElementById("nome_aluno_edit").value = arr.dados[0].nome_aluno;
-     	    document.getElementById("rfid_aluno_edit").value = arr.dados[0].rfid_aluno;
-    		document.getElementById("matricula_aluno_edit").value = arr.dados[0].matricula_aluno;
+    	  	document.getElementById("id_pessoa_edit").value = arr.dados[0].id_pessoa;
+     	    document.getElementById("nome_pessoa_edit").value = arr.dados[0].nome_pessoa;
+     	    document.getElementById("rfid_pessoa_edit").value = arr.dados[0].rfid_pessoa;
+    		document.getElementById("matricula_pessoa_edit").value = arr.dados[0].matricula_pessoa;
     		document.getElementById("orgao_expedidor_rg_edit").select = arr.dados[0].orgao_expedidor_rg;
-    		document.getElementById("rg_aluno_edit").value = arr.dados[0].rg_aluno;
-    		document.getElementById("cep_aluno_edit").value = arr.dados[0].cep_aluno;
-    		document.getElementById("endereco_aluno_edit").value = arr.dados[0].endereco_aluno;
-    		document.getElementById("numero_aluno_edit").value = arr.dados[0].numero_aluno;
-    		document.getElementById("bairro_aluno_edit").value = arr.dados[0].bairro_aluno;
-    		document.getElementById("cidade_aluno_edit").value = arr.dados[0].cidade_aluno;
-    		document.getElementById("uf_aluno_edit").value = arr.dados[0].uf_aluno;
-    		document.getElementById("telefone_aluno_edit").value = arr.dados[0].telefone_aluno;
-    		document.getElementById("celular_aluno_edit").value = arr.dados[0].celular_aluno;
-    		document.getElementById("email_aluno_edit").value = arr.dados[0].email_aluno;
+    		document.getElementById("rg_pessoa_edit").value = arr.dados[0].rg_pessoa;
+    		document.getElementById("cep_pessoa_edit").value = arr.dados[0].cep_pessoa;
+    		document.getElementById("endereco_pessoa_edit").value = arr.dados[0].endereco_pessoa;
+    		document.getElementById("numero_pessoa_edit").value = arr.dados[0].numero_pessoa;
+    		document.getElementById("bairro_pessoa_edit").value = arr.dados[0].bairro_pessoa;
+    		document.getElementById("cidade_pessoa_edit").value = arr.dados[0].cidade_pessoa;
+    		document.getElementById("uf_pessoa_edit").value = arr.dados[0].uf_pessoa;
+    		document.getElementById("telefone_pessoa_edit").value = arr.dados[0].telefone_pessoa;
+    		document.getElementById("celular_pessoa_edit").value = arr.dados[0].celular_pessoa;
+    		document.getElementById("email_pessoa_edit").value = arr.dados[0].email_pessoa;
 
     	  
     	  $("#dlg_editar").dialog({
@@ -413,28 +435,28 @@ function close_edit(){
 	$("#dlg_editar").dialog("close");
 }
 
-function edit_aluno(){
-	var id = document.getElementById("id_aluno_edit").value;
-	var nome = document.getElementById("nome_aluno_edit").value;
-	var rfid = document.getElementById("rfid_aluno_edit").value;
-	var matricula = document.getElementById("matricula_aluno_edit").value;
+function edit_pessoa(){
+	var id = document.getElementById("id_pessoa_edit").value;
+	var nome = document.getElementById("nome_pessoa_edit").value;
+	var rfid = document.getElementById("rfid_pessoa_edit").value;
+	var matricula = document.getElementById("matricula_pessoa_edit").value;
 	var orgao = document.getElementById("orgao_expedidor_rg_edit").value;
-	var rg = document.getElementById("rg_aluno_edit").value;
-	var cep = document.getElementById("cep_aluno_edit").value;
-	var endereco = document.getElementById("endereco_aluno_edit").value;
-	var numero = document.getElementById("numero_aluno_edit").value;
-	var bairro = document.getElementById("bairro_aluno_edit").value;
-	var cidade = document.getElementById("cidade_aluno_edit").value;
-	var uf = document.getElementById("uf_aluno_edit").value;
-	var telefone = document.getElementById("telefone_aluno_edit").value;
-	var celular = document.getElementById("celular_aluno_edit").value;
-	var email = document.getElementById("email_aluno_edit").value;
+	var rg = document.getElementById("rg_pessoa_edit").value;
+	var cep = document.getElementById("cep_pessoa_edit").value;
+	var endereco = document.getElementById("endereco_pessoa_edit").value;
+	var numero = document.getElementById("numero_pessoa_edit").value;
+	var bairro = document.getElementById("bairro_pessoa_edit").value;
+	var cidade = document.getElementById("cidade_pessoa_edit").value;
+	var uf = document.getElementById("uf_pessoa_edit").value;
+	var telefone = document.getElementById("telefone_pessoa_edit").value;
+	var celular = document.getElementById("celular_pessoa_edit").value;
+	var email = document.getElementById("email_pessoa_edit").value;
 
 	//cria o objeto JSON
-	var dados = '{"id_aluno":"'+id+'", "nome_aluno":"'+nome+'","rfid_aluno":"'+rfid+'","matricula_aluno":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_aluno":"'+rg+'","cep_aluno":"'+cep+'","endereco_aluno":"'+endereco+'","numero_aluno":"'+numero+'","bairro_aluno":"'+bairro+'","cidade_aluno":"'+cidade+'","uf_aluno":"'+uf+'","telefone_aluno":"'+telefone+'","celular_aluno":"'+celular+'","email_aluno":"'+email+'","operacao":"edit"}';
+	var dados = '{"id_pessoa":"'+id+'", "nome_pessoa":"'+nome+'","rfid_pessoa":"'+rfid+'","matricula_pessoa":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_pessoa":"'+rg+'","cep_pessoa":"'+cep+'","endereco_pessoa":"'+endereco+'","numero_pessoa":"'+numero+'","bairro_pessoa":"'+bairro+'","cidade_pessoa":"'+cidade+'","uf_pessoa":"'+uf+'","telefone_pessoa":"'+telefone+'","celular_pessoa":"'+celular+'","email_pessoa":"'+email+'","operacao":"edit"}';
 	$.ajax({
         type: "POST",
-        url: "../actions/aluno_actions.php",
+        url: "../actions/pessoa_actions.php",
         data: "dados=" +  dados
     })
     .done(function(data){
@@ -463,28 +485,28 @@ include_once ('../include/menubar.php');
 ?>
 
 <!-- janela para editar -->
-    <div id="dlg_editar" title="Editar Aluno" style="display: none">
+    <div id="dlg_editar" title="Editar Indivíduo" style="display: none">
 		<form name="form" action="POST">
 			<div class="row">
 				<div class="form-group col-md-1">
-					<label for="id_aluno_edit">Aluno</label> <input
-						type="text" class="form-control" id="id_aluno_edit"
-						placeholder="ID" id="name" name="nome_aluno" disabled>
+					<label for="id_pessoa_edit">Pessoa</label> <input
+						type="text" class="form-control" id="id_pessoa_edit"
+						placeholder="ID" id="name" name="nome_pessoa" disabled>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="matricula_aluno_edit">Matricula</label> <input
-						type="text" class="form-control" id="matricula_aluno_edit"
-						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno_edit');" required>
+					<label for="matricula_pessoa_edit">Matricula</label> <input
+						type="text" class="form-control" id="matricula_pessoa_edit"
+						placeholder="Matricula" name="nome_pessoa" onkeyup="Enter('rfid_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="rfid_aluno_edit">TagRFID</label> <input
-					    type="text" class="form-control" id="rfid_aluno_edit"
-					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno_edit');" required>
+					<label for="rfid_pessoa_edit">TagRFID</label> <input
+					    type="text" class="form-control" id="rfid_pessoa_edit"
+					    placeholder="RFID"	name="nome_pessoa" onkeyup="Enter('nome_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-7">
-					<label for="nome_aluno_edit">Nome</label> <input
-						type="text" class="form-control" id="nome_aluno_edit"
-						placeholder="Nome" id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg_edit');" required>
+					<label for="nome_pessoa_edit">Nome</label> <input
+						type="text" class="form-control" id="nome_pessoa_edit"
+						placeholder="Nome" id="name" name="nome_pessoa" onkeyup="Enter('orgao_expedidor_rg_edit');" required>
 				</div>
 			</div>
 			<div class="row">
@@ -521,70 +543,70 @@ include_once ('../include/menubar.php');
                         </select>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="rg_aluno_edit">RG</label> <input
-						type="text" class="form-control" id="rg_aluno_edit"
-						placeholder="RG" name="rg_aluno" onkeyup="Enter('cep_aluno_edit');" required>
+					<label for="rg_pessoa_edit">RG</label> <input
+						type="text" class="form-control" id="rg_pessoa_edit"
+						placeholder="RG" name="rg_pessoa" onkeyup="Enter('cep_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="cep_aluno_edit">CEP</label> <input
-						type="text" class="form-control" id="cep_aluno_edit"
-						placeholder="CEP" name="cep_aluno" onkeyup="Enter('endereco_aluno_edit');" required>
+					<label for="cep_pessoa_edit">CEP</label> <input
+						type="text" class="form-control" id="cep_pessoa_edit"
+						placeholder="CEP" name="cep_pessoa" onkeyup="Enter('endereco_pessoa_edit');"size="10" maxlength="9" onblur="pesquisacep(this.value);" onkeyup="Enter('endereco_pessoa_edit');" required>
 				</div>
                 <div class="form-group col-md-5">
-					<label for="endereco_aluno_edit">Endereço</label> <input
-						type="text" class="form-control" id="endereco_aluno_edit"
-						placeholder="Endereço" name="endereco_aluno" onkeyup="Enter('numero_aluno_edit');" required>
+					<label for="endereco_pessoa_edit">Endereço</label> <input
+						type="text" class="form-control" id="endereco_pessoa_edit"
+						placeholder="Endereço" name="endereco_pessoa" onkeyup="Enter('numero_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-1">
-					<label for="numero_aluno_edit">Número</label> <input
-						type="text" class="form-control" id="numero_aluno_edit"
-						placeholder="Nº" name="numero_aluno" onkeyup="Enter('bairro_aluno_edit');" required>
+					<label for="numero_pessoa_edit">Número</label> <input
+						type="text" class="form-control" id="numero_pessoa_edit"
+						placeholder="Nº" name="numero_pessoa" onkeyup="Enter('bairro_pessoa_edit');" required>
 				</div>
 			</div>
 			<div class="row">
 			    <div class="form-group col-md-3">
-					<label for="bairro_aluno_edit">Bairro</label> <input
-						type="text" class="form-control" id="bairro_aluno_edit"
-						placeholder="Bairro" name="bairro_aluno" onkeyup="Enter('cidade_aluno_edit');" required>
+					<label for="bairro_pessoa_edit">Bairro</label> <input
+						type="text" class="form-control" id="bairro_pessoa_edit"
+						placeholder="Bairro" name="bairro_pessoa" onkeyup="Enter('cidade_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-3">
-					<label for="cidade_aluno_edit">Cidade</label> <input
-						type="text" class="form-control" id="cidade_aluno_edit"
-						placeholder="Cidade" name="cidade_aluno" onkeyup="Enter('uf_aluno_edit');" required>
+					<label for="cidade_pessoa_edit">Cidade</label> <input
+						type="text" class="form-control" id="cidade_pessoa_edit"
+						placeholder="Cidade" name="cidade_pessoa" onkeyup="Enter('uf_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-1">
-					<label for="uf_aluno_edit">UF</label> <input
-						type="text" class="form-control" id="uf_aluno_edit"
-						placeholder="UF" name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno_edit');" required>
+					<label for="uf_pessoa_edit">UF</label> <input
+						type="text" class="form-control" id="uf_pessoa_edit"
+						placeholder="UF" name="uf_pessoa" maxlength="2" onkeyup="Enter('telefone_pessoa_edit');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="telefone_aluno_edit">Telefone</label> <input
-						type="text" class="form-control" id="telefone_aluno_edit"
-						placeholder="DDD + número" name="cep_aluno" onkeyup="Enter('celular_aluno_edit');">
+					<label for="telefone_pessoa_edit">Telefone</label> <input
+						type="text" class="form-control" id="telefone_pessoa_edit"
+						placeholder="DDD + número" name="cep_pessoa" onkeyup="Enter('celular_pessoa_edit');">
 				</div>
 				<div class="form-group col-md-2">
-					<label for="celular_aluno_edit">Celular</label> <input
-						type="text" class="form-control" id="celular_aluno_edit"
-						placeholder="(DDD) número" name="celular_aluno"  onkeyup="Enter('email_aluno_edit');">
+					<label for="celular_pessoa_edit">Celular</label> <input
+						type="text" class="form-control" id="celular_pessoa_edit"
+						placeholder="(DDD) número" name="celular_pessoa"  onkeyup="Enter('email_pessoa_edit');">
 				</div>
 			</div>
             <div class="row">
 			    <div class="form-group col-md-4">
-					<label for="email_aluno_edit">Endereço E-mail</label> <input
-						type="email" class="form-control" id="email_aluno_edit"
-						placeholder="exemplo@dominio.com" name="email_aluno" required>
+					<label for="email_pessoa_edit">Endereço E-mail</label> <input
+						type="email" class="form-control" id="email_pessoa_edit"
+						placeholder="exemplo@dominio.com" name="email_pessoa" required>
 				</div>
 			</div>
 			<hr>
 			<div class="row" id="response_error_edit" style="display: none">
 				<div class="alert alert-danger" role="alert">
-					<span id="error_message"></span>
+					<span id="error_message">Preencha corretamente os campos requeridos.</span>
 				</div>
 			</div>
 
 			<div class="row" id="response_ok_edit" style="display: none">
 				<div class="alert alert-success" role="alert">
-					<span>Aluno alterado com sucesso!</span>
+					<span>Cadastro alterado com sucesso!</span>
 				</div>
 			</div>
 
@@ -598,7 +620,7 @@ include_once ('../include/menubar.php');
 			<div class="row">
 				<div class="form-group col-md-12">
 					<button type="button" class="btn btn-primary"
-						onclick="edit_aluno();" id="btn_editar">Editar</button>
+						onclick="edit_pessoa();" id="btn_editar">Editar</button>
 					<button type="button" class="btn btn-danger"
 						onclick="close_edit();" id="btnCancelEdit">Cancelar</button>
 					<button type="button" class="btn btn-default" id="btnFecharEdit"
@@ -610,30 +632,30 @@ include_once ('../include/menubar.php');
 	</div>
 
 <!-- janela para inativar -->
-	<div id="dlg_delete" title="Inativar Aluno" style="display: none">
+	<div id="dlg_delete" title="Inativar Pessoa" style="display: none">
 		<form name="form_delete" action="POST">
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label for="id_aluno_del">Id. Aluno</label> <input
-						type="text" class="form-control" id="id_aluno_del" id="name"
-						name="nome_aluno" disabled>
+					<label for="id_pessoa_del">Id. Indivíduo</label> <input
+						type="text" class="form-control" id="id_pessoa_del" id="name"
+						name="nome_pessoa" disabled>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label for="nome_aluno_del">Nome</label> <input
-						type="text" class="form-control" id="nome_aluno_del"
-						id="name" name="nome_aluno" disabled>
+					<label for="nome_pessoa_del">Nome</label> <input
+						type="text" class="form-control" id="nome_pessoa_del"
+						id="name" name="nome_pessoa" disabled>
 				</div>
 			</div>
 			<div class="row" id="response_error_delete" style="display: none">
 				<div class="alert alert-danger" role="alert">
-					<span>Erro ao excluir Aluno</span>
+					<span>Erro ao excluir cadastro</span>
 				</div>
 			</div>
 			<div class="row" id="response_ok_delete" style="display: none">
 				<div class="alert alert-success" role="alert">
-					<span>Aluno excluído com sucesso!</span>
+					<span>Cadastro excluído com sucesso!</span>
 				</div>
 			</div>
 			<div class="row" id="wait_delete" style="display: none">
@@ -653,30 +675,30 @@ include_once ('../include/menubar.php');
 	</div>
 	
 <!-- janela para cadastrar -->
-	<div id="dlg_inserir" title="Cadastrar novo aluno"
+	<div id="dlg_inserir" title="Cadastrar nova pessoa"
 		style="display: none">
 		<form name="form" action="POST">
 			<div class="row">
 			    <div class="form-group col-md-2">
-					<label for="matricula_aluno">Matricula</label> <input
-						type="text" class="form-control" id="matricula_aluno"
-						placeholder="Matricula" name="nome_aluno" onkeyup="Enter('rfid_aluno');" required>
+					<label for="matricula_pessoa">Matricula</label> <input
+						type="text" class="form-control" id="matricula_pessoa"
+						placeholder="Matricula" name="nome_pessoa" onkeyup="Enter('rfid_pessoa');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="rfid_aluno">TagRFID</label> <input
-					    type="text" class="form-control" id="rfid_aluno"
-					    placeholder="RFID"	name="nome_aluno" onkeyup="Enter('nome_aluno');" required>
+					<label for="rfid_pessoa">TagRFID</label> <input
+					    type="text" class="form-control" id="rfid_pessoa"
+					    placeholder="RFID"	name="nome_pessoa" onkeyup="Enter('nome_pessoa');" required>
 				</div>
 				<div class="form-group col-md-8">
-					<label for="nome_aluno">Nome</label> <input type="text"
-						class="form-control" id="nome_aluno" placeholder="Nome"
-						id="name" name="nome_aluno" onkeyup="Enter('orgao_expedidor_rg');" required>
+					<label for="nome_pessoa">Nome</label> <input type="text"
+						class="form-control" id="nome_pessoa" placeholder="Nome"
+						id="name" name="nome_pessoa" onkeyup="Enter('orgao_expedidor_rg');" required>
 				</div>
 			</div>
 			<div class="row">
                  <div class="form-group col-md-2">
 					<label for="orgao_expedidor_rg">RG</label>
-					    <select id="orgao_expedidor_rg" class="form-control" onkeyup="Enter('rg_aluno');" required>
+					    <select id="orgao_expedidor_rg" class="form-control" onkeyup="Enter('rg_pessoa');" required>
                         <option value="ac">Acre</option>
                         <option value="al">Alagoas</option>
                         <option value="ap">Amapá</option>
@@ -707,70 +729,75 @@ include_once ('../include/menubar.php');
                         </select>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="rg_aluno">RG</label> <input type="text"
-						class="form-control" id="rg_aluno" placeholder="RG"
-						name="rg_aluno" onkeyup="Enter('cep_aluno');" required>
+					<label for="rg_pessoa">RG</label> <input type="text"
+						class="form-control" id="rg_pessoa" placeholder="RG"
+						name="rg_pessoa" onkeyup="Enter('cep_pessoa');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="cep_aluno">CEP</label> <input type="text"
-						class="form-control" id="cep_aluno" placeholder="CEP"
-						name="cep_aluno" size="10" maxlength="9" onblur="pesquisacep(this.value);" onkeyup="Enter('endereco_aluno');" required>
+					<label for="cep_pessoa">CEP</label> <input type="text"
+						class="form-control" id="cep_pessoa" placeholder="CEP"
+						name="cep_pessoa" size="10" maxlength="9" onblur="pesquisacep(this.value);" onkeyup="Enter('endereco_pessoa');" required>
 				</div>
 				<div class="form-group col-md-5">
-					<label for="endereco_aluno">Endereço</label> <input
-						type="text" class="form-control" id="endereco_aluno"
-						placeholder="Endereço" name="nome_aluno" onkeyup="Enter('numero_aluno');" required>
+					<label for="endereco_pessoa">Endereço</label> <input
+						type="text" class="form-control" id="endereco_pessoa"
+						placeholder="Endereço" name="nome_pessoa" onkeyup="Enter('numero_pessoa');" required>
 				</div>
 				<div class="form-group col-md-1">
-					<label for="numero_aluno">Número</label> <input type="text"
-						class="form-control" id="numero_aluno" placeholder="Nº"
-						name="numero_aluno" onkeyup="Enter('bairro_aluno');" required>
+					<label for="numero_pessoa">Número</label> <input type="text"
+						class="form-control" id="numero_pessoa" placeholder="Nº"
+						name="numero_pessoa" onkeyup="Enter('bairro_pessoa');" required>
 				</div>
 			</div>
 			<div class="row">
                 <div class="form-group col-md-3">
-					<label for="bairro_aluno">Bairro</label> <input type="text"
-						class="form-control" id="bairro_aluno" placeholder="Bairro"
-						name="bairro_aluno" onkeyup="Enter('cidade_aluno');" required>
+					<label for="bairro_pessoa">Bairro</label> <input type="text"
+						class="form-control" id="bairro_pessoa" placeholder="Bairro"
+						name="bairro_pessoa" onkeyup="Enter('cidade_pessoa');" required>
 				</div>
 				<div class="form-group col-md-4">
-					<label for="cidade_aluno">Cidade</label> <input type="text"
-						class="form-control" id="cidade_aluno" placeholder="Cidade"
-						name="cidade_aluno" onkeyup="Enter('uf_aluno');" required>
+					<label for="cidade_pessoa">Cidade</label> <input type="text"
+						class="form-control" id="cidade_pessoa" placeholder="Cidade"
+						name="cidade_pessoa" onkeyup="Enter('uf_pessoa');" required>
 				</div>
 				<div class="form-group col-md-1">
-					<label for="uf_aluno">UF</label> <input type="text"
-						class="form-control" id="uf_aluno" placeholder="UF"
-						name="uf_aluno" maxlength="2" onkeyup="Enter('telefone_aluno');" required>
+					<label for="uf_pessoa">UF</label> <input type="text"
+						class="form-control" id="uf_pessoa" placeholder="UF"
+						name="uf_pessoa" maxlength="2" onkeyup="Enter('telefone_pessoa');" required>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="telefone_aluno">Telefone</label> <input type="text"
-						class="form-control" id="telefone_aluno" placeholder="DDD + telefone"
-						name="telefone_aluno" onkeyup="Enter('celular_aluno');">
+					<label for="telefone_pessoa">Telefone</label> <input type="text"
+						class="form-control" id="telefone_pessoa" placeholder="DDD + telefone"
+						name="telefone_pessoa" onkeyup="Enter('celular_pessoa');">
 				</div>
 				<div class="form-group col-md-2">
-					<label for="celular_aluno">Celular</label> <input
-						type="text" class="form-control" id="celular_aluno"
-						placeholder="(DDD) número" name="celular_aluno" onkeyup="Enter('email_aluno');">
+					<label for="celular_pessoa">Celular</label> <input
+						type="text" class="form-control" id="celular_pessoa"
+						placeholder="(DDD) número" name="celular_pessoa" onkeyup="Enter('email_pessoa');">
 				</div>
 			</div>
 			<div class="row">
                 <div class="form-group col-md-4">
-					<label for="email_aluno">Endereço E-mail</label> <input
-						type="email" class="form-control" id="email_aluno"
-						placeholder="exemplo@dominio.com" name="email_aluno" required>
+					<label for="email_pessoa">Endereço E-mail</label> <input
+						type="email" class="form-control" id="email_pessoa"
+						placeholder="exemplo@dominio.com" name="email_pessoa" required>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="foto_pessoa">Foto</label> <input
+						type="file" class="form-control" id="foto_pessoa"
+						placeholder="image" name="foto_pessoa" required>
 				</div>
 			</div>
 			<hr>
 			<div class="row" id="response_error" style="display: none">
 				<div class="alert alert-danger" role="alert">
-					<span id="error_message"></span>
+					<span id="error_message">Preencha corretamente os campos requeridos.</span>
 				</div>
 			</div>
 
 			<div class="row" id="response_ok" style="display: none">
 				<div class="alert alert-success" role="alert">
-					<span>Aluno inserido com sucesso!</span>
+					<span>Cadastro inserido com sucesso!</span>
 				</div>
 			</div>
 			<div class="row" id="wait" style="display: none">
@@ -792,27 +819,27 @@ include_once ('../include/menubar.php');
 	</div>
 
 <!-- janela de detalhes -->
-	<div id="dlg_show" title="Aluno Selecionado" style="display: none">
+	<div id="dlg_show" title="Item Selecionado" style="display: none">
 		<div class="row">
 			<div class="form-group col-md-1">
-				<label for="id_aluno_ver">Id. Aluno</label> <input
-					type="text" class="form-control" id="id_aluno_ver"
-					placeholder="ID" id="name" name="id_aluno_ver" disabled>
+				<label for="id_pessoa_ver">Id. Indivíduo</label> <input
+					type="text" class="form-control" id="id_pessoa_ver"
+					placeholder="ID" id="name" name="id_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="matricula_aluno_ver">Matricula</label> <input type="text"
-					class="form-control" id="matricula_aluno_ver"
-					placeholder="(vazio)" name="matricula_aluno_ver" disabled>
+				<label for="matricula_pessoa_ver">Matricula</label> <input type="text"
+					class="form-control" id="matricula_pessoa_ver"
+					placeholder="(vazio)" name="matricula_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-2">
-					<label for="rfid_aluno_ver">TagRFID</label> <input
-					    type="text" class="form-control" id="rfid_aluno_ver"
-					    placeholder="(vazio)"	name="nome_aluno" disabled>
+					<label for="rfid_pessoa_ver">TagRFID</label> <input
+					    type="text" class="form-control" id="rfid_pessoa_ver"
+					    placeholder="(vazio)"	name="nome_pessoa" disabled>
 			</div>
 			<div class="form-group col-md-7">
-				<label for="nome_aluno_ver">Nome Aluno</label> <input
-					type="text" class="form-control" id="nome_aluno_ver"
-					placeholder="(vazio)" id="name" name="nome_aluno_ver" disabled>
+				<label for="nome_pessoa_ver">Nome pessoa</label> <input
+					type="text" class="form-control" id="nome_pessoa_ver"
+					placeholder="(vazio)" id="name" name="nome_pessoa_ver" disabled>
 			</div>
 		</div>
 		<div class="row">
@@ -849,58 +876,58 @@ include_once ('../include/menubar.php');
                         </select>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="rg_aluno_ver">RG</label> <input type="text"
-					class="form-control" id="rg_aluno_ver" placeholder="(vazio)"
-					name="rg_aluno_ver" disabled>
+				<label for="rg_pessoa_ver">RG</label> <input type="text"
+					class="form-control" id="rg_pessoa_ver" placeholder="(vazio)"
+					name="rg_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="cep_aluno_ver">CEP</label> <input type="text"
-					class="form-control" id="cep_aluno_ver"
-					placeholder="CEP" name="cep_aluno_ver" disabled>
+				<label for="cep_pessoa_ver">CEP</label> <input type="text"
+					class="form-control" id="cep_pessoa_ver"
+					placeholder="CEP" name="cep_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-5">
-					<label for="endereco_aluno_ver">Endereço</label> <input
-						type="text" class="form-control" id="endereco_aluno_ver"
-						placeholder="Endereço" name="endereco_aluno_ver" disabled>
+					<label for="endereco_pessoa_ver">Endereço</label> <input
+						type="text" class="form-control" id="endereco_pessoa_ver"
+						placeholder="Endereço" name="endereco_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-1">
-				<label for="numero_aluno_ver">Número</label> <input type="text"
-					class="form-control" id="numero_aluno_ver"
-					placeholder="Nº" name="numero_aluno_ver" disabled>
+				<label for="numero_pessoa_ver">Número</label> <input type="text"
+					class="form-control" id="numero_pessoa_ver"
+					placeholder="Nº" name="numero_pessoa_ver" disabled>
 			</div>
 		</div>
 		<div class="row">
 		    <div class="form-group col-md-3">
-				<label for="bairro_aluno_ver">Bairro</label> <input type="text"
-					class="form-control" id="bairro_aluno_ver"
-					placeholder="Bairro" name="bairro_aluno_ver" disabled>
+				<label for="bairro_pessoa_ver">Bairro</label> <input type="text"
+					class="form-control" id="bairro_pessoa_ver"
+					placeholder="Bairro" name="bairro_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-3">
-				<label for="cidade_aluno_ver">Cidade</label> <input type="text"
-					class="form-control" id="cidade_aluno_ver"
-					placeholder="Cidade" name="cidade_aluno_ver" disabled>
+				<label for="cidade_pessoa_ver">Cidade</label> <input type="text"
+					class="form-control" id="cidade_pessoa_ver"
+					placeholder="Cidade" name="cidade_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-1">
-				<label for="uf_aluno_ver">UF</label> <input type="text"
-					class="form-control" id="uf_aluno_ver"
-					placeholder="UF" name="uf_aluno_ver" disabled>
+				<label for="uf_pessoa_ver">UF</label> <input type="text"
+					class="form-control" id="uf_pessoa_ver"
+					placeholder="UF" name="uf_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="telefone_aluno_ver">Telefone</label> <input type="text"
-					class="form-control" id="telefone_aluno_ver" placeholder="(vazio)"
-					name="telefone_aluno_ver" disabled>
+				<label for="telefone_pessoa_ver">Telefone</label> <input type="text"
+					class="form-control" id="telefone_pessoa_ver" placeholder="(vazio)"
+					name="telefone_pessoa_ver" disabled>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="celular_aluno_ver">Celular</label> <input
-					type="text" class="form-control" id="celular_aluno_ver"
-					placeholder="(vazio)" name="celular_aluno_ver" disabled>
+				<label for="celular_pessoa_ver">Celular</label> <input
+					type="text" class="form-control" id="celular_pessoa_ver"
+					placeholder="(vazio)" name="celular_pessoa_ver" disabled>
 			</div>
 		</div>
 		<div class="row">
 		    <div class="form-group col-md-4">
-				<label for="email_aluno_ver">Endereço E-mail</label> <input
-					type="text" class="form-control" id="email_aluno_ver"
-					placeholder="(vazio)" name="email_aluno_ver" disabled>
+				<label for="email_pessoa_ver">Endereço E-mail</label> <input
+					type="text" class="form-control" id="email_pessoa_ver"
+					placeholder="(vazio)" name="email_pessoa_ver" disabled>
 			</div>
 		</div>
 		<hr>
@@ -915,11 +942,11 @@ include_once ('../include/menubar.php');
 	<main class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2>Alunos</h2>
+			<h2>Pessoas</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
 			<a class="btn btn-primary" onclick="open_insert();"><i
-				class="fa fa-plus"></i>Novo Aluno</a> <a
+				class="fa fa-plus"></i>Novo cadastro</a> <a
 				class="btn btn-default" onclick="carregaDados();"><i
 				class="fa fa-refresh"></i>Atualizar</a>
 		</div>

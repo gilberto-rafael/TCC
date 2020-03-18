@@ -19,7 +19,7 @@
 
 		//Buscar na tabela usuário o usuário que corresponde com os dados digitado no formulário
 
-		$result_usuario = "SELECT * FROM alunos WHERE email_aluno = '$usuario' && senha_aluno = '$senha' LIMIT 1;";
+		$result_usuario = "SELECT * FROM vw_login WHERE email_pessoa = '$usuario' && senha_pessoa = '$senha' LIMIT 1;";
 		$resultado_usuario = mysqli_query($connect, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 
@@ -31,11 +31,11 @@
 
 		} elseif (isset($resultado)){
 
-		    $_SESSION['usuarioId'] = $resultado['id_aluno'];
-		    $_SESSION['usuarioNome'] = $resultado['nome_aluno'];
-		    $_SESSION['usuarioNiveisAcessoId'] = $resultado['niveis_acesso_id'];
-		    $_SESSION['usuarioEmail'] = $resultado['email_aluno'];
-		    $_SESSION['usuarioSenha'] = $resultado['senha_aluno'];
+		    $_SESSION['usuarioId'] = $resultado['id_pessoa'];
+		    $_SESSION['usuarioNome'] = $resultado['nome_pessoa'];
+		    $_SESSION['usuarioNiveisAcessoId'] = $resultado['nivel_acesso_id'];
+		    $_SESSION['usuarioEmail'] = $resultado['email_pessoa'];
+		    $_SESSION['usuarioSenha'] = $resultado['senha_pessoa'];
 			header("Location: ../../admin/index.php");
 
 		} else {
