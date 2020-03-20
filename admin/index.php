@@ -13,7 +13,6 @@
 
   <body>
 	<?php
-	    session_start();
         include('include/menubar.php');
         echo "olá mundo! Usuário logado: ". $_SESSION['usuarioNome'];
 

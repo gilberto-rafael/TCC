@@ -1,4 +1,15 @@
 <!-- Static navbar -->
+<?php
+session_start();
+
+if ($_SESSION['usuarioId'] == "2"){
+
+print($_SESSION['usuarioId']);
+
+$idSessao = $_SESSION['usuarioId'];
+
+}
+?>
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
@@ -14,7 +25,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/PresencaCerta/admin/">Home</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<li class="dropdown" id="teste"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Cadastros<span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -36,7 +47,6 @@
 		<!--/.nav-collapse -->
 	</div>
 </nav>
-
 <style type="text/css">
 .light{
 background-color: white;
@@ -48,6 +58,15 @@ color: #ffffff;
 </style>
 <script language="javascript" type="text/javascript">
 <!--
+//validação: tipos de usuario 2 não pode visualizar cadastros
+var idSessao = "<?php echo $idSessao;?>"
+
+if(idSessao=="2"){
+
+console.log(idSessao);
+document.getElementById('teste').style.display="none";
+}
+
 function trocar(){
 var obj=document.getElementById('body');
 var tab=document.getElementById('tabela');
@@ -56,7 +75,7 @@ if(obj.className=='light'){
 	obj.className='dark';
 }else{
 	obj.className='light';
- }
+}
 /*
 if(tab.className=='table table-striped'){
 	tab.className='table table-striped table-dark';
@@ -65,6 +84,7 @@ if(tab.className=='table table-striped'){
  }*/
 
 }
+
 </script>
 
 

@@ -1,5 +1,9 @@
 <html lang="pt-br">
 <head>
+
+<?php
+include_once ('../include/menubar.php');
+?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -206,7 +210,7 @@ function insert(){
 	var celular = document.getElementById("celular_pessoa").value;
 	var email = document.getElementById("email_pessoa").value;
 
-	//cria o objeto JSON
+	//cria o objeto JSON para infos
 	var dados = '{"nome_pessoa":"'+nome+'","rfid_pessoa":"'+rfid+'","matricula_pessoa":"'+matricula+'","orgao_expedidor_rg":"'+orgao+'","rg_pessoa":"'+rg+'","cep_pessoa":"'+cep+'","endereco_pessoa":"'+endereco+'","numero_pessoa":"'+numero+'","bairro_pessoa":"'+bairro+'","cidade_pessoa":"'+cidade+'","uf_pessoa":"'+uf+'","telefone_pessoa":"'+telefone+'","celular_pessoa":"'+celular+'","email_pessoa":"'+email+'","operacao":"insert"}';
 	document.getElementById("response_error").style.display="none";
 	document.getElementById("response_ok").style.display="none";
@@ -229,8 +233,9 @@ function insert(){
 				document.getElementById("wait").style.display = "none";
 				document.getElementById("response_error").style.display = "block";
 			 }
-	 }); 
+	 });
 }
+
 function carregaDados(){
 	var dados = '{"operacao":"load"}';
 
@@ -241,7 +246,7 @@ function carregaDados(){
 	})
 	.done(function (data){
 		//Faz parser do JSON
-		//console.log(data);
+		console.log(data);
 		var vetor = JSON.parse(data);
 
 		var tabela = document.getElementById("tabela");
@@ -480,9 +485,6 @@ function edit_pessoa(){
 </head>
 <body onload="carregaDados();" id="body" class="light">
 
-<?php
-include_once ('../include/menubar.php');
-?>
 
 <!-- janela para editar -->
     <div id="dlg_editar" title="Editar Indivíduo" style="display: none">
@@ -783,10 +785,8 @@ include_once ('../include/menubar.php');
 						placeholder="exemplo@dominio.com" name="email_pessoa" required>
 				</div>
 				<div class="form-group col-md-4">
-					<label for="foto_pessoa">Foto</label> <input
-						type="file" class="form-control" id="foto_pessoa"
-						placeholder="image" name="foto_pessoa" required>
-				</div>
+				    <label for="foto">Foto</label>
+                </div>
 			</div>
 			<hr>
 			<div class="row" id="response_error" style="display: none">

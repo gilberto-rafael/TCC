@@ -36,8 +36,14 @@
 		    $_SESSION['usuarioNiveisAcessoId'] = $resultado['nivel_acesso_id'];
 		    $_SESSION['usuarioEmail'] = $resultado['email_pessoa'];
 		    $_SESSION['usuarioSenha'] = $resultado['senha_pessoa'];
-			header("Location: ../../admin/index.php");
 
+            if($_SESSION['usuarioNiveisAcessoId'] == "1"){
+				header("Location: ../../admin/index.php");
+			}elseif($_SESSION['usuarioNiveisAcessoId'] == "2"){
+				header("Location: ../../admin/index.php");
+			}else{
+				header("Location: ../../pages/login.php");
+			}
 		} else {
 		    //loginErro é uma var global recebendo a mensagem de erro
 			$_SESSION['loginErro'] = "Usuário ou senha Inválidos";

@@ -9,7 +9,7 @@ class pessoaDAO
     {
         $query = "INSERT INTO `teste`.`pessoas`(`nome_pessoa`,`rfid_pessoa`,`matricula_pessoa`,`orgao_expedidor_rg`,`rg_pessoa`,`cep_pessoa`,`endereco_pessoa`,`numero_pessoa`,`bairro_pessoa`,`cidade_pessoa`,`uf_pessoa`,`telefone_pessoa`,`celular_pessoa`,`email_pessoa`)VALUES (:nome,:rfid,:matricula,:orgao,:rg,:cep,:endereco,:numero,:bairro,:cidade,:uf,:telefone,:celular,:email);";
         $statement = Conexao::getConnection()->prepare($query);
-        
+
         $statement->bindValue(":nome", $pessoa->getNome());
         $statement->bindValue(":rfid", $pessoa->getRfid());
         $statement->bindValue(":matricula", $pessoa->getMatricula());
