@@ -1,5 +1,8 @@
 use teste;
 
+create schema teste;
+drop schema teste;
+
 create table if not exists pessoas(
 	id_pessoa int not null primary key auto_increment,
     matricula_pessoa varchar(30),
@@ -44,10 +47,11 @@ CREATE TABLE IF NOT EXISTS niveis_acessos (
 
 select * from niveis_acessos;
 
-CREATE VIEW vw_login AS SELECT p.id_pessoa, p.nome_pessoa, p.matricula_pessoa, p.nivel_acesso_id, p.email_pessoa, p.senha_pessoa FROM pessoas p INNER JOIN niveis_acessos n ON p.nivel_acesso_id = n.id;
+CREATE VIEW vw_login AS SELECT p.id_pessoa, p.nome_pessoa, p.matricula_pessoa, p.nivel_acesso_id, p.email_pessoa, p.senha_pessoa, p.status_ativo FROM pessoas p INNER JOIN niveis_acessos n ON p.nivel_acesso_id = n.id;
 
 select * from vw_login;
 
+select p.id_pessoa, p.nome_pessoa, p.matricula_pessoa, p.nivel_acesso_id, p.email_pessoa, p.senha_pessoa, p.status_ativo FROM pessoas p INNER JOIN niveis_acessos n ON p.nivel_acesso_id = n.id where p.status_ativo=1;
 
 CREATE TABLE IF NOT EXISTS `tabela_imagens` (
 `codigo` int(10) PRIMARY KEY auto_increment,

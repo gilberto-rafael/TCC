@@ -1,13 +1,10 @@
 <!-- Static navbar -->
 <?php
 session_start();
+//captura usuário logado e salva em uma variavel para recuperar no JS depois
+if ($_SESSION['usuarioNiveisAcessoId'] == "2"){
 
-if ($_SESSION['usuarioId'] == "2"){
-
-print($_SESSION['usuarioId']);
-
-$idSessao = $_SESSION['usuarioId'];
-
+$idSessao = $_SESSION['usuarioNiveisAcessoId'];
 }
 ?>
 <nav class="navbar navbar-default">
@@ -63,7 +60,6 @@ var idSessao = "<?php echo $idSessao;?>"
 
 if(idSessao=="2"){
 
-console.log(idSessao);
 document.getElementById('teste').style.display="none";
 }
 
